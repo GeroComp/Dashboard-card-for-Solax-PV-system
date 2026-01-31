@@ -33,9 +33,9 @@ elements:
     entity: sensor.solax_state
     style:
       left: 16%
-      top: 12.5%
+      top: 12%
       width: 113px
-      height: 108px
+      height: 100px
       background-color: rgba(0, 0, 0, 0.6)
       border-radius: 15px
       color: transparent
@@ -66,7 +66,7 @@ elements:
     entity: sensor.solax_state
     style:
       left: 16%
-      top: 14%
+      top: 13%
       width: 260px
       text-align: center
       color: transparent
@@ -105,7 +105,7 @@ elements:
     style:
       top: 8.5%
       left: 82%
-      color: white
+      color: orange
       font-weight: bold
       font-size: 0.9em
   - type: state-label
@@ -149,6 +149,13 @@ elements:
       background-color: rgba(0,0,0,0.3)
       border-radius: 8px
       padding: 2px 6px
+  - type: icon
+    icon: mdi:flash
+    style:
+      top: 30.9%
+      left: 10%
+      color: "#ff9800"
+      transform: scale(0.9)
   - type: state-badge
     entity: sensor.solax_inverter_temperature
     style:
@@ -171,121 +178,165 @@ elements:
     entity: sensor.solax_state
     style:
       top: 32%
-      left: 82%
-      width: 130px
-      height: 120px
+      left: 81%
+      width: 148px
+      height: 20%
       background-color: rgba(0, 0, 0, 0.5)
       border-radius: 10px
       color: transparent
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 34%
+      left: 78.7%
+      width: 1.2px
+      height: 13%
+      background-color: white
+      color: transparent
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 34%
+      left: 88.9%
+      width: 1px
+      height: 13%
+      background-color: white
+      color: transparent
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 21%
+      left: 78%
+      color: transparent
+    card_mod:
+      style: >
+        :host:after { content: 'L1'; color: #ff9800; font-weight: bold;
+        font-size: 0.9em; }
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 21%
+      left: 89%
+      color: transparent
+    card_mod:
+      style: >
+        :host:after { content: 'L2'; color: #ff9800; font-weight: bold;
+        font-size: 0.9em; }
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 21%
+      left: 98%
+      color: transparent
+    card_mod:
+      style: >
+        :host:after { content: 'L3'; color: #ff9800; font-weight: bold;
+        font-size: 0.9em; }
   - type: icon
     icon: mdi:flash
     style:
-      top: 23%
-      left: 70%
+      top: 27%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:sine-wave
     style:
-      top: 23%
-      left: 79%
+      top: 32%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:current-ac
     style:
-      top: 23%
-      left: 89%
+      top: 36.5%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
-      
-  # --- FÁZE 1 ---
   - type: state-label
     entity: sensor.solax_acp1
     style:
-      top: 30%
-      left: 72%
+      top: 29%
+      left: 72.6%
+      width: 60px
+      text-align: right
       color: white
       font-weight: bold
-      font-size: 1.1em        # ZMENŠENÍ
-      font-family: monospace  # LEPŠÍ ČITELNOST ČÍSEL
-  - type: state-label
-    entity: sensor.solax_acu1
-    style:
-      top: 30%
-      left: 81.5%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
-  - type: state-label
-    entity: sensor.solax_aci1
-    style:
-      top: 30%
-      left: 91.5%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
-
-  # --- FÁZE 2 ---
+      font-size: 0.8em
   - type: state-label
     entity: sensor.solax_acp2
     style:
-      top: 34.8%
-      left: 72%
+      top: 29%
+      left: 83%
+      width: 60px
+      text-align: right
       color: white
       font-weight: bold
-      font-size: 1.1em        # ZMENŠENÍ
-      font-family: monospace
-  - type: state-label
-    entity: sensor.solax_acu2
-    style:
-      top: 34.8%
-      left: 82%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
-  - type: state-label
-    entity: sensor.solax_aci2
-    style:
-      top: 34.8%
-      left: 91.5%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
-
-  # --- FÁZE 3 ---
+      font-size: 0.8em
   - type: state-label
     entity: sensor.solax_acp3
     style:
-      top: 39.5%
-      left: 72%
+      top: 29%
+      left: 93%
+      width: 60px
+      text-align: right
       color: white
       font-weight: bold
-      font-size: 1.1em        # ZMENŠENÍ
-      font-family: monospace
+      font-size: 0.8em
+  - type: state-label
+    entity: sensor.solax_acu1
+    style:
+      top: 34%
+      left: 71.5%
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
+  - type: state-label
+    entity: sensor.solax_acu2
+    style:
+      top: 34%
+      left: 82%
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_acu3
     style:
-      top: 39.5%
+      top: 34%
+      left: 92%
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
+  - type: state-label
+    entity: sensor.solax_aci1
+    style:
+      top: 39%
+      left: 72%
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
+  - type: state-label
+    entity: sensor.solax_aci2
+    style:
+      top: 39%
       left: 82%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_aci3
     style:
-      top: 39.5%
-      left: 91.5%
-      color: white
-      font-weight: normal
-      font-size: 0.8em        # ZMENŠENÍ
-      font-family: monospace
-
+      top: 39%
+      left: 92%
+      width: 60px
+      text-align: right
+      color: rgba(255, 255, 255, 0.8)
+      font-size: 0.75em
   - type: state-icon
     entity: binary_sensor.x_sense_kourovy_senzor_fve_kour
     tap_action:
@@ -336,13 +387,27 @@ elements:
       border-radius: 10px
       padding: 5px 15px
       color: white
-      font-size: 0.8em
+      font-size: 0.9em
+    card_mod:
+      style: |
+        :host {
+          color: 
+            {% if 'Self Use' in states(config.entity) %} 
+              #4caf50  /* Zelená pro Self Use */
+            {% elif 'Feedin' in states(config.entity) %} 
+              #ff9800  /* Oranžová pro Feedin Priority */
+            {% elif 'Backup' in states(config.entity) %} 
+              #03a9f4  /* Modrá pro Backup */
+            {% else %} 
+              white    /* Bílá pro ostatní */
+            {% endif %} !important;
+        }
   - type: state-badge
     entity: sensor.solax_battery_power
     style:
       left: 48%
       top: 71%
-      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-font-size": 1.2em
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": rgba(0,0,0,0.7)
       "--label-badge-text-color": white
@@ -351,7 +416,7 @@ elements:
     style:
       left: 89%
       top: 72%
-      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-font-size": 1.2em
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": "#4caf50"
       "--label-badge-text-color": white
@@ -371,7 +436,7 @@ elements:
     style:
       left: 64%
       top: 72%
-      transform: scale(0.9)
+      transform: scale(0.8)
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": rgba(255, 152, 0, 0.3)
   - type: state-label
@@ -381,7 +446,43 @@ elements:
       top: 85%
       background-color: rgba(0,0,0,0.5)
       border-radius: 4px
-      padding: 3px 6px
+      padding: 3px 6px 15px 6px /* Větší padding dole kvůli textu */
       color: white
+      font-size: 0.9em
+      font-weight: bold
+  - type: state-label
+    entity: sensor.solax_battery_remain
+    style:
+      left: 90%
+      top: 87.6%
+      width: 100px
+      font-size: 0.6em
+      line-height: 1.1em
+      text-align: center
+      pointer-events: none
+    card_mod:
+      style: |
+        :host {
+           background: none;
+        }
+        div {
+           display: none; /* Skryje samotné číslo */
+        }
+        :host:after {
+           content: "Zbývající \A kapacita baterie"; /* \A je nový řádek */
+           white-space: pre-wrap;
+           display: block;
+           /* Zde je logika barvy podle SoC (stavu nabití v %) */
+           color: 
+             {% set soc = states('sensor.solax_battery_soc') | float(0) %}
+             {% if soc >= 75 %}
+               #4caf50  /* Zelená nad 75% */
+             {% elif soc >= 30 %}
+               orange   /* Oranžová 30-75% */
+             {% else %}
+               red      /* Červená pod 30% */
+             {% endif %};
+        }
+
       font-size: 0.8em
       "--ha-label-badge-title-font-size": 0em
