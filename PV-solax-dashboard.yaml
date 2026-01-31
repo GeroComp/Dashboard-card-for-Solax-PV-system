@@ -176,7 +176,7 @@ elements:
     entity: sensor.solax_state
     style:
       top: 34%
-      left: 78%  # Mezi L1 a L2
+      left: 78.7%  # Mezi L1 a L2
       width: 1.2px
       height: 13%
       background-color: white
@@ -185,7 +185,7 @@ elements:
     entity: sensor.solax_state
     style:
       top: 34%
-      left: 88.3%  # Mezi L2 a L3
+      left: 88.9%  # Mezi L2 a L3
       width: 1px
       height: 13%
       background-color: white
@@ -248,7 +248,7 @@ elements:
     entity: sensor.solax_acp1
     style:
       top: 29%
-      left: 71.5%
+      left: 72.6%
       width: 60px
       text-align: right
       color: white
@@ -258,7 +258,7 @@ elements:
     entity: sensor.solax_acp2
     style:
       top: 29%
-      left: 82%
+      left: 83%
       width: 60px
       text-align: right
       color: white
@@ -268,7 +268,7 @@ elements:
     entity: sensor.solax_acp3
     style:
       top: 29%
-      left: 92%
+      left: 93%
       width: 60px
       text-align: right
       color: white
