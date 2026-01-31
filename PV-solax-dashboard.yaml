@@ -379,6 +379,8 @@ elements:
           0% { transform: translate(-50%, -50%) scale(1.8) rotate(0deg); }
           100% { transform: translate(-50%, -50%) scale(1.8) rotate(360deg); }
         }
+
+  # --- SELF USE MODE (Měnění barev) ---
   - type: state-label
     entity: sensor.solax_mode
     style:
@@ -388,7 +390,21 @@ elements:
       border-radius: 10px
       padding: 5px 15px
       color: white
-      font-size: 0.8em
+      font-size: 0.9em
+    card_mod:
+      style: |
+        :host {
+          color: 
+            {% if 'Self Use' in states(config.entity) %} 
+              #4caf50  /* Zelená pro Self Use */
+            {% elif 'Feedin' in states(config.entity) %} 
+              #ff9800  /* Oranžová pro Feedin Priority */
+            {% elif 'Backup' in states(config.entity) %} 
+              #03a9f4  /* Modrá pro Backup */
+            {% else %} 
+              white    /* Bílá pro ostatní */
+            {% endif %} !important;
+        }
 
   # --- BATERIE (Spodní část) ---
   - type: state-badge
@@ -428,6 +444,8 @@ elements:
       transform: scale(0.8)
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": rgba(255, 152, 0, 0.3)
+
+  # --- HODNOTA BATERIE (Zbývající) ---
   - type: state-label
     entity: sensor.solax_battery_remain
     style:
@@ -435,6 +453,42 @@ elements:
       top: 85%
       background-color: rgba(0,0,0,0.5)
       border-radius: 4px
-      padding: 3px 6px
+      padding: 3px 6px 15px 6px /* Větší padding dole kvůli textu */
       color: white
-      font-size: 0.8em
+      font-size: 0.9em
+      font-weight: bold
+
+  # --- TEXT POD BATERIÍ (Zbývající kapacita - BAREVNÝ) ---
+  - type: state-label
+    entity: sensor.solax_battery_remain # Použijeme stejný senzor, ale skryjeme stav
+    style:
+      left: 90%
+      top: 87.6% # Posunuto pod hodnotu
+      width: 100px # Omezení šířky, aby se text zalomil
+      font-size: 0.6em
+      line-height: 1.1em
+      text-align: center
+      pointer-events: none # Aby se na text neklikalo
+    card_mod:
+      style: |
+        :host {
+           background: none;
+        }
+        div {
+           display: none; /* Skryje samotné číslo */
+        }
+        :host:after {
+           content: "Zbývající \A kapacita baterie"; /* \A je nový řádek */
+           white-space: pre-wrap;
+           display: block;
+           /* Zde je logika barvy podle SoC (stavu nabití v %) */
+           color: 
+             {% set soc = states('sensor.solax_battery_soc') | float(0) %}
+             {% if soc >= 75 %}
+               #4caf50  /* Zelená nad 75% */
+             {% elif soc >= 30 %}
+               orange   /* Oranžová 30-75% */
+             {% else %}
+               red      /* Červená pod 30% */
+             {% endif %};
+        }
