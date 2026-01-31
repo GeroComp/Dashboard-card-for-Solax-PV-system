@@ -2,14 +2,14 @@ type: picture-elements
 image: /local/FVE_solax2.png
 aspect_ratio: 120%
 elements:
-  # --- STAV STŘÍDAČE (Levý horní box) ---
+  # --- TEPLOTA A VLHKOST (Levý horní box) ---
   - type: state-label
     entity: sensor.solax_state
     style:
       left: 16%
-      top: 12.5%
+      top: 12%
       width: 113px
-      height: 108px
+      height: 100px
       background-color: rgba(0, 0, 0, 0.6)
       border-radius: 15px
       color: transparent
@@ -42,7 +42,7 @@ elements:
     entity: sensor.solax_state
     style:
       left: 16%
-      top: 14%
+      top: 13%
       width: 260px
       text-align: center
       color: transparent
@@ -133,7 +133,7 @@ elements:
     icon: mdi:flash
     style:
       top: 30.9%
-      left: 11.5%
+      left: 10%
       color: "#ff9800"
       transform: scale(0.9)
   - type: state-badge
@@ -163,10 +163,10 @@ elements:
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 34%
+      top: 32%
       left: 81%  
-      width: 150px
-      height: 23%
+      width: 148px
+      height: 20%
       background-color: rgba(0, 0, 0, 0.5)
       border-radius: 10px
       color: transparent
@@ -175,19 +175,19 @@ elements:
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 36%
-      left: 77.6%  # Mezi L1 a L2
+      top: 34%
+      left: 78%  # Mezi L1 a L2
       width: 1.2px
-      height: 17%
+      height: 13%
       background-color: white
       color: transparent
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 36%
-      left: 87.6%  # Mezi L2 a L3
+      top: 34%
+      left: 88.3%  # Mezi L2 a L3
       width: 1px
-      height: 17%
+      height: 13%
       background-color: white
       color: transparent
 
@@ -195,8 +195,8 @@ elements:
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 22%
-      left: 77%
+      top: 21%
+      left: 78%
       color: transparent
     card_mod:
       style: |
@@ -204,8 +204,8 @@ elements:
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 22%
-      left: 88%
+      top: 21%
+      left: 89%
       color: transparent
     card_mod:
       style: |
@@ -213,8 +213,8 @@ elements:
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 22%
-      left: 97.5%
+      top: 21%
+      left: 98%
       color: transparent
     card_mod:
       style: |
@@ -225,21 +225,21 @@ elements:
     icon: mdi:flash
     style:
       top: 27%
-      left: 63%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:sine-wave
     style:
-      top: 33.8%
-      left: 63%
+      top: 32%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:current-ac
     style:
-      top: 40.6%
-      left: 63%
+      top: 36.5%
+      left: 63.5%
       color: "#ff9800"
       transform: scale(0.9)
 
@@ -248,7 +248,7 @@ elements:
     entity: sensor.solax_acp1
     style:
       top: 29%
-      left: 71%
+      left: 71.5%
       width: 60px
       text-align: right
       color: white
@@ -258,7 +258,7 @@ elements:
     entity: sensor.solax_acp2
     style:
       top: 29%
-      left: 81%
+      left: 82%
       width: 60px
       text-align: right
       color: white
@@ -268,7 +268,7 @@ elements:
     entity: sensor.solax_acp3
     style:
       top: 29%
-      left: 91%
+      left: 92%
       width: 60px
       text-align: right
       color: white
@@ -279,8 +279,8 @@ elements:
   - type: state-label
     entity: sensor.solax_acu1
     style:
-      top: 36%
-      left: 71%
+      top: 34%
+      left: 71.5%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
@@ -288,8 +288,8 @@ elements:
   - type: state-label
     entity: sensor.solax_acu2
     style:
-      top: 36%
-      left: 81%
+      top: 34%
+      left: 82%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
@@ -297,8 +297,8 @@ elements:
   - type: state-label
     entity: sensor.solax_acu3
     style:
-      top: 36%
-      left: 91%
+      top: 34%
+      left: 92%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
@@ -308,8 +308,8 @@ elements:
   - type: state-label
     entity: sensor.solax_aci1
     style:
-      top: 43%
-      left: 71%
+      top: 39%
+      left: 72%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
@@ -317,8 +317,8 @@ elements:
   - type: state-label
     entity: sensor.solax_aci2
     style:
-      top: 43%
-      left: 81%
+      top: 39%
+      left: 82%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
@@ -326,8 +326,8 @@ elements:
   - type: state-label
     entity: sensor.solax_aci3
     style:
-      top: 43%
-      left: 91%
+      top: 39%
+      left: 92%
       width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
