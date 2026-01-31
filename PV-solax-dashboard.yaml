@@ -1,0 +1,215 @@
+type: picture-elements
+image: /local/FVE_solax1.png
+aspect_ratio: 120%
+elements:
+  # --- SEKCE BATERIE ---
+  - type: state-badge # Výkon baterie
+    entity: sensor.solax_battery_power
+    style:
+      left: 48%
+      top: 79%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # Teplota baterie
+    entity: sensor.solax_battery_temperature
+    style:
+      left: 48%
+      top: 90%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # Celková kapacita / v baterii
+    entity: sensor.solax_battery_in_total
+    style:
+      left: 68.3%
+      top: 80%
+      "--ha-label-badge-font-size": 1.2em
+      "--ha-label-badge-title-font-size": 0.8em
+
+  - type: state-badge # Zbývající energie
+    entity: sensor.solax_battery_remain
+    style:
+      left: 87%
+      top: 79%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # SOC (Procenta nabití)
+    entity: sensor.solax_battery_soc
+    style:
+      left: 87%
+      top: 90%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  # --- SEKCE STŘÍDAČ (INVERTER) ---
+  - type: state-badge # Celkový AC výkon
+    entity: sensor.solax_ac_power
+    style:
+      left: 27%
+      top: 33%
+      "--ha-label-badge-font-size": 1.4em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # Teplota střídače (venkovní/chladič)
+    entity: sensor.solax_inverter_temperature
+    style:
+      left: 48%
+      top: 18.5%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # Teplota střídače (vnitřní)
+    entity: sensor.solax_inverter_temperature_inner
+    style:
+      left: 48%
+      top: 43%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-label # Verze Firmware
+    entity: sensor.solax_firmware
+    style:
+      top: 53%
+      left: 48%
+
+  - type: state-label # Sériové číslo
+    entity: sensor.solax_inverter_sn
+    style:
+      top: 5%
+      left: 82%
+
+  - type: state-label # Typ střídače
+    entity: sensor.solax_type
+    style:
+      top: 9%
+      left: 82%
+
+  - type: state-label # Stav (Working, Waiting...)
+    entity: sensor.solax_state
+    style:
+      top: 13%
+      left: 82.6%
+
+  - type: state-label # Pracovní mód
+    entity: sensor.solax_mode
+    style:
+      top: 65%
+      left: 87%
+
+  # --- PROSTŘEDÍ A BEZPEČNOST ---
+  - type: state-badge # Teplota v místnosti
+    entity: sensor.technicka_mistnost_fve_temperature
+    style:
+      left: 8%
+      top: 7%
+      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-badge # Vlhkost v místnosti
+    entity: sensor.technicka_mistnost_fve_humidity
+    style:
+      left: 24%
+      top: 7%
+      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-title-font-size": 0em
+
+  - type: state-icon # Kouřový senzor (ikona)
+    entity: binary_sensor.x_sense_kourovy_senzor_fve_kour
+    tap_action:
+      action: toggle
+    style:
+      top: 49%
+      left: 14%
+
+  - type: state-label # Kouřový senzor (textový stav)
+    entity: binary_sensor.x_sense_kourovy_senzor_fve_kour
+    style:
+      top: 55%
+      left: 14%
+
+  # --- OVLÁDÁNÍ CHLAZENÍ ---
+  - type: state-icon # Přepínač chlazení
+    entity: switch.chlazeni_stridace_solax
+    tap_action:
+      action: toggle
+    style:
+      top: 57%
+      left: 48%
+
+  - type: state-label # Text přepínače chlazení
+    entity: switch.chlazeni_stridace_solax
+    style:
+      top: 62%
+      left: 48%
+
+  # --- MONITORING FÁZÍ (P=Výkon, U=Napětí, I=Proud) ---
+  # Fáze 1
+  - type: state-badge
+    entity: sensor.solax_acp1
+    style:
+      left: 70%
+      top: 22%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_acu1
+    style:
+      left: 82%
+      top: 22%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_aci1
+    style:
+      left: 92%
+      top: 22%
+      "--ha-label-badge-font-size": 0.8em
+      "--ha-label-badge-title-font-size": 0em
+
+  # Fáze 2
+  - type: state-badge
+    entity: sensor.solax_acp2
+    style:
+      left: 70%
+      top: 32%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_acu2
+    style:
+      left: 82%
+      top: 32%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_aci2
+    style:
+      left: 92%
+      top: 32%
+      "--ha-label-badge-font-size": 0.8em
+      "--ha-label-badge-title-font-size": 0em
+
+  # Fáze 3
+  - type: state-badge
+    entity: sensor.solax_acp3
+    style:
+      left: 70%
+      top: 42%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_acu3
+    style:
+      left: 82%
+      top: 42%
+      "--ha-label-badge-font-size": 1em
+      "--ha-label-badge-title-font-size": 0em
+  - type: state-badge
+    entity: sensor.solax_aci3
+    style:
+      left: 92%
+      top: 42%
+      "--ha-label-badge-font-size": 0.8em
+      "--ha-label-badge-title-font-size": 0em
