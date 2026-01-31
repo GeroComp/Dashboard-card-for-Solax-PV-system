@@ -26,217 +26,362 @@ Vložte tento kód do **Manuální karty** (Manual card) ve vašem Lovelace dash
 
 ```yaml
 type: picture-elements
-image: /local/FVE_solax1.png
+image: /local/FVE_solax2.png
 aspect_ratio: 120%
 elements:
-  # --- SEKCE BATERIE ---
-  - type: state-badge # Výkon baterie
-    entity: sensor.solax_battery_power
+  - type: state-label
+    entity: sensor.solax_state
     style:
-      left: 48%
-      top: 79%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # Teplota baterie
-    entity: sensor.solax_battery_temperature
+      left: 16%
+      top: 12.5%
+      width: 113px
+      height: 108px
+      background-color: rgba(0, 0, 0, 0.6)
+      border-radius: 15px
+      color: transparent
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.5)
+  - type: state-badge
+    entity: sensor.technicka_mistnost_fve_temperature
+    name: null
     style:
-      left: 48%
-      top: 90%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # Celková kapacita / v baterii
-    entity: sensor.solax_battery_in_total
-    style:
-      left: 68.3%
-      top: 80%
+      left: 10%
+      top: 8%
       "--ha-label-badge-font-size": 1.2em
-      "--ha-label-badge-title-font-size": 0.8em
-
-  - type: state-badge # Zbývající energie
-    entity: sensor.solax_battery_remain
+      "--ha-label-badge-background-color": rgba(0,0,0,0.4)
+      "--label-badge-text-color": white
+      "--label-badge-red": "#ff9800"
+      "--ha-label-badge-title-font-size": 0.9em
+  - type: state-badge
+    entity: sensor.technicka_mistnost_fve_humidity
+    name: null
     style:
-      left: 87%
-      top: 79%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # SOC (Procenta nabití)
-    entity: sensor.solax_battery_soc
+      left: 22%
+      top: 8%
+      "--ha-label-badge-font-size": 1.2em
+      "--ha-label-badge-background-color": rgba(0,0,0,0.4)
+      "--label-badge-text-color": white
+      "--label-badge-red": "#03a9f4"
+      "--ha-label-badge-title-font-size": 0.9em
+  - type: state-label
+    entity: sensor.solax_state
     style:
-      left: 87%
-      top: 90%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  # --- SEKCE STŘÍDAČ (INVERTER) ---
-  - type: state-badge # Celkový AC výkon
-    entity: sensor.solax_ac_power
+      left: 16%
+      top: 14%
+      width: 260px
+      text-align: center
+      color: transparent
+    card_mod:
+      style: |
+        :host:after {
+          content: "Teplota a vlhkost \A v technické místnosti";
+          white-space: pre;
+          display: block;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.75em;
+          line-height: 1.3;
+          letter-spacing: 0.5px;
+        }
+  - type: state-label
+    entity: sensor.solax_state
     style:
-      left: 27%
-      top: 33%
-      "--ha-label-badge-font-size": 1.4em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # Teplota střídače (venkovní/chladič)
-    entity: sensor.solax_inverter_temperature
-    style:
-      left: 48%
-      top: 18.5%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # Teplota střídače (vnitřní)
-    entity: sensor.solax_inverter_temperature_inner
-    style:
-      left: 48%
-      top: 43%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-
-  - type: state-label # Verze Firmware
-    entity: sensor.solax_firmware
-    style:
-      top: 53%
-      left: 48%
-
-  - type: state-label # Sériové číslo
+      top: 10%
+      left: 82%
+      width: 130px
+      height: 85px
+      background-color: rgba(0, 0, 0, 0.6)
+      border-radius: 10px
+      color: transparent
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.5)
+  - type: state-label
     entity: sensor.solax_inverter_sn
+    prefix: "SN: "
     style:
       top: 5%
       left: 82%
-
-  - type: state-label # Typ střídače
+      color: rgba(255, 255, 255, 0.6)
+      font-size: 0.7em
+  - type: state-label
     entity: sensor.solax_type
     style:
-      top: 9%
+      top: 8.5%
       left: 82%
-
-  - type: state-label # Stav (Working, Waiting...)
+      color: white
+      font-weight: bold
+      font-size: 0.9em
+  - type: state-label
     entity: sensor.solax_state
     style:
-      top: 13%
-      left: 82.6%
-
-  - type: state-label # Pracovní mód
-    entity: sensor.solax_mode
+      top: 12%
+      left: 82%
+      font-weight: 900
+      font-size: 1.2em
+      text-transform: uppercase
+      letter-spacing: 1.5px
+    card_mod:
+      style: |
+        :host {
+          color: 
+            {% if states(config.entity) in ['Normal', 'Run', 'Running', 'Wait Mode'] %} 
+              #4caf50 
+            {% elif states(config.entity) in ['Fault', 'Error'] %} 
+              red 
+            {% else %} 
+              orange 
+            {% endif %};
+        }
+  - type: state-label
+    entity: sensor.solax_firmware
+    prefix: "FW: "
     style:
-      top: 65%
-      left: 87%
-
-  # --- PROSTŘEDÍ A BEZPEČNOST ---
-  - type: state-badge # Teplota v místnosti
-    entity: sensor.technicka_mistnost_fve_temperature
+      top: 15.5%
+      left: 82.3%
+      color: rgba(0, 220, 200, 20)
+      font-size: 0.6em
+  - type: state-label
+    entity: sensor.solax_ac_power
+    prefix: "Výkon: "
     style:
-      left: 8%
-      top: 7%
-      "--ha-label-badge-font-size": 1.3em
+      left: 26%
+      top: 33%
+      color: white
+      font-size: 1em
+      text-shadow: 0px 0px 4px black
+      background-color: rgba(0,0,0,0.3)
+      border-radius: 8px
+      padding: 2px 6px
+  - type: state-badge
+    entity: sensor.solax_inverter_temperature
+    style:
+      left: 40%
+      top: 9%
+      transform: scale(0.8)
       "--ha-label-badge-title-font-size": 0em
-
-  - type: state-badge # Vlhkost v místnosti
-    entity: sensor.technicka_mistnost_fve_humidity
+      "--ha-label-badge-background-color": rgba(0,0,0,0.6)
+      "--label-badge-text-color": white
+  - type: state-badge
+    entity: sensor.solax_inverter_temperature_inner
     style:
-      left: 24%
-      top: 7%
-      "--ha-label-badge-font-size": 1.3em
+      left: 40%
+      top: 37%
+      transform: scale(0.8)
       "--ha-label-badge-title-font-size": 0em
+      "--ha-label-badge-background-color": rgba(0,0,0,0.6)
+      "--label-badge-text-color": white
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 32%
+      left: 82%
+      width: 130px
+      height: 120px
+      background-color: rgba(0, 0, 0, 0.5)
+      border-radius: 10px
+      color: transparent
+  - type: icon
+    icon: mdi:flash
+    style:
+      top: 23%
+      left: 70%
+      color: "#ff9800"
+      transform: scale(0.9)
+  - type: icon
+    icon: mdi:sine-wave
+    style:
+      top: 23%
+      left: 79%
+      color: "#ff9800"
+      transform: scale(0.9)
+  - type: icon
+    icon: mdi:current-ac
+    style:
+      top: 23%
+      left: 89%
+      color: "#ff9800"
+      transform: scale(0.9)
+      
+  # --- FÁZE 1 ---
+  - type: state-label
+    entity: sensor.solax_acp1
+    style:
+      top: 30%
+      left: 72%
+      color: white
+      font-weight: bold
+      font-size: 1.1em        # ZMENŠENÍ
+      font-family: monospace  # LEPŠÍ ČITELNOST ČÍSEL
+  - type: state-label
+    entity: sensor.solax_acu1
+    style:
+      top: 30%
+      left: 81.5%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
+  - type: state-label
+    entity: sensor.solax_aci1
+    style:
+      top: 30%
+      left: 91.5%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
 
-  - type: state-icon # Kouřový senzor (ikona)
+  # --- FÁZE 2 ---
+  - type: state-label
+    entity: sensor.solax_acp2
+    style:
+      top: 34.8%
+      left: 72%
+      color: white
+      font-weight: bold
+      font-size: 1.1em        # ZMENŠENÍ
+      font-family: monospace
+  - type: state-label
+    entity: sensor.solax_acu2
+    style:
+      top: 34.8%
+      left: 82%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
+  - type: state-label
+    entity: sensor.solax_aci2
+    style:
+      top: 34.8%
+      left: 91.5%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
+
+  # --- FÁZE 3 ---
+  - type: state-label
+    entity: sensor.solax_acp3
+    style:
+      top: 39.5%
+      left: 72%
+      color: white
+      font-weight: bold
+      font-size: 1.1em        # ZMENŠENÍ
+      font-family: monospace
+  - type: state-label
+    entity: sensor.solax_acu3
+    style:
+      top: 39.5%
+      left: 82%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
+  - type: state-label
+    entity: sensor.solax_aci3
+    style:
+      top: 39.5%
+      left: 91.5%
+      color: white
+      font-weight: normal
+      font-size: 0.8em        # ZMENŠENÍ
+      font-family: monospace
+
+  - type: state-icon
     entity: binary_sensor.x_sense_kourovy_senzor_fve_kour
     tap_action:
       action: toggle
     style:
-      top: 49%
-      left: 14%
-
-  - type: state-label # Kouřový senzor (textový stav)
-    entity: binary_sensor.x_sense_kourovy_senzor_fve_kour
-    style:
-      top: 55%
-      left: 14%
-
-  # --- OVLÁDÁNÍ CHLAZENÍ ---
-  - type: state-icon # Přepínač chlazení
+      top: 45%
+      left: 12%
+      transform: scale(1.5)
+      "--paper-item-icon-color": rgba(255, 255, 255, 0.4)
+      "--paper-item-icon-active-color": red
+    card_mod:
+      style: |
+        :host {
+          animation: {{ 'blink 1s linear infinite' if is_state(config.entity, 'on') else 'none' }};
+        }
+        @keyframes blink {
+          50% { opacity: 0; transform: scale(2.0); }
+        }
+  - type: state-icon
     entity: switch.chlazeni_stridace_solax
     tap_action:
       action: toggle
     style:
       top: 57%
+      left: 51%
+      color: rgba(255, 255, 255, 0.7)
+      "--paper-item-icon-active-color": "#03a9f4"
+    card_mod:
+      style: |
+        :host {
+          transform-origin: center center;
+          display: block;
+        }
+        state-badge {
+          transform: translate(-50%, -50%) scale(1.8);
+          animation: {{ 'rotation 2s linear infinite' if is_state(config.entity, 'on') else 'none' }};
+        }
+        @keyframes rotation {
+          0% { transform: translate(-50%, -50%) scale(1.8) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) scale(1.8) rotate(360deg); }
+        }
+  - type: state-label
+    entity: sensor.solax_mode
+    style:
+      top: 55%
+      left: 85%
+      background-color: rgba(0, 0, 0, 0.6)
+      border-radius: 10px
+      padding: 5px 15px
+      color: white
+      font-size: 0.8em
+  - type: state-badge
+    entity: sensor.solax_battery_power
+    style:
       left: 48%
-
-  - type: state-label # Text přepínače chlazení
-    entity: switch.chlazeni_stridace_solax
+      top: 71%
+      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-title-font-size": 0em
+      "--ha-label-badge-background-color": rgba(0,0,0,0.7)
+      "--label-badge-text-color": white
+  - type: state-badge
+    entity: sensor.solax_battery_soc
     style:
-      top: 62%
+      left: 89%
+      top: 72%
+      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-title-font-size": 0em
+      "--ha-label-badge-background-color": "#4caf50"
+      "--label-badge-text-color": white
+  - type: state-label
+    entity: sensor.solax_battery_temperature
+    prefix: "🌡 "
+    style:
       left: 48%
-
-  # --- MONITORING FÁZÍ (P=Výkon, U=Napětí, I=Proud) ---
-  # Fáze 1
+      top: 85%
+      background-color: rgba(0, 0, 0, 0.5)
+      padding: 3px 6px
+      border-radius: 4px
+      color: white
+      font-size: 1em
   - type: state-badge
-    entity: sensor.solax_acp1
+    entity: sensor.solax_battery_in_total
     style:
-      left: 70%
-      top: 22%
-      "--ha-label-badge-font-size": 1em
+      left: 64%
+      top: 72%
+      transform: scale(0.9)
       "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_acu1
+      "--ha-label-badge-background-color": rgba(255, 152, 0, 0.3)
+  - type: state-label
+    entity: sensor.solax_battery_remain
     style:
-      left: 82%
-      top: 22%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_aci1
-    style:
-      left: 92%
-      top: 22%
-      "--ha-label-badge-font-size": 0.8em
-      "--ha-label-badge-title-font-size": 0em
-
-  # Fáze 2
-  - type: state-badge
-    entity: sensor.solax_acp2
-    style:
-      left: 70%
-      top: 32%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_acu2
-    style:
-      left: 82%
-      top: 32%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_aci2
-    style:
-      left: 92%
-      top: 32%
-      "--ha-label-badge-font-size": 0.8em
-      "--ha-label-badge-title-font-size": 0em
-
-  # Fáze 3
-  - type: state-badge
-    entity: sensor.solax_acp3
-    style:
-      left: 70%
-      top: 42%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_acu3
-    style:
-      left: 82%
-      top: 42%
-      "--ha-label-badge-font-size": 1em
-      "--ha-label-badge-title-font-size": 0em
-  - type: state-badge
-    entity: sensor.solax_aci3
-    style:
-      left: 92%
-      top: 42%
-      "--ha-label-badge-font-size": 0.8em
+      left: 90%
+      top: 85%
+      background-color: rgba(0,0,0,0.5)
+      border-radius: 4px
+      padding: 3px 6px
+      color: white
+      font-size: 0.8em
       "--ha-label-badge-title-font-size": 0em
