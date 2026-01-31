@@ -83,7 +83,7 @@ elements:
     style:
       top: 8.5%
       left: 82%
-      color: white
+      color: orange
       font-weight: bold
       font-size: 0.9em
   - type: state-label
@@ -129,6 +129,13 @@ elements:
       background-color: rgba(0,0,0,0.3)
       border-radius: 8px
       padding: 2px 6px
+  - type: icon
+    icon: mdi:flash
+    style:
+      top: 30.9%
+      left: 11.5%
+      color: "#ff9800"
+      transform: scale(0.9)
   - type: state-badge
     entity: sensor.solax_inverter_temperature
     style:
@@ -149,142 +156,182 @@ elements:
       "--label-badge-text-color": white
 
   # ============================================================
-  # === OBLAST FÁZÍ (Vpravo uprostřed) - UPRAVENO ===
+  # === OBLAST FÁZÍ (Vpravo uprostřed) - S LINKAMI A L1-L3 ===
   # ============================================================
   
-  # 1. Pozadí (Rozšířené, aby pokrylo ikony i text)
+  # 1. Pozadí (Mírně zvýšené kvůli hlavičkám)
   - type: state-label
     entity: sensor.solax_state
     style:
-      top: 33%
-      left: 82%  
-      width: 150px 
-      height: 19%
+      top: 34%
+      left: 81%  
+      width: 150px
+      height: 23%
       background-color: rgba(0, 0, 0, 0.5)
       border-radius: 10px
       color: transparent
 
-  # 2. Ikony (Posunuty vlevo na 62%)
+  # 2. SVISLÉ LINKY (Oddělovače fází)
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 36%
+      left: 77.6%  # Mezi L1 a L2
+      width: 1.2px
+      height: 17%
+      background-color: white
+      color: transparent
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 36%
+      left: 87.6%  # Mezi L2 a L3
+      width: 1px
+      height: 17%
+      background-color: white
+      color: transparent
+
+  # 3. HLAVIČKY (L1, L2, L3)
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 22%
+      left: 77%
+      color: transparent
+    card_mod:
+      style: |
+        :host:after { content: 'L1'; color: #ff9800; font-weight: bold; font-size: 0.9em; }
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 22%
+      left: 88%
+      color: transparent
+    card_mod:
+      style: |
+        :host:after { content: 'L2'; color: #ff9800; font-weight: bold; font-size: 0.9em; }
+  - type: state-label
+    entity: sensor.solax_state
+    style:
+      top: 22%
+      left: 97.5%
+      color: transparent
+    card_mod:
+      style: |
+        :host:after { content: 'L3'; color: #ff9800; font-weight: bold; font-size: 0.9em; }
+
+  # 4. Ikony (Posunuto na 63%)
   - type: icon
     icon: mdi:flash
     style:
-      top: 25%
-      left: 64%
+      top: 27%
+      left: 63%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:sine-wave
     style:
-      top: 32%
-      left: 64%
+      top: 33.8%
+      left: 63%
       color: "#ff9800"
       transform: scale(0.9)
   - type: icon
     icon: mdi:current-ac
     style:
-      top: 38%
-      left: 64%
+      top: 40.6%
+      left: 63%
       color: "#ff9800"
       transform: scale(0.9)
 
-  # 3. Řádek 1: VÝKON (W)
+  # 5. Řádek 1: VÝKON (W)
   - type: state-label
     entity: sensor.solax_acp1
     style:
-      top: 27%
-      left: 72%
-      width: 70px
+      top: 29%
+      left: 71%
+      width: 60px
       text-align: right
       color: white
       font-weight: bold
       font-size: 0.8em
-      font-family: monospace
   - type: state-label
     entity: sensor.solax_acp2
     style:
-      top: 27%
-      left: 82%
-      width: 70px
+      top: 29%
+      left: 81%
+      width: 60px
       text-align: right
       color: white
       font-weight: bold
       font-size: 0.8em
-      font-family: monospace
   - type: state-label
     entity: sensor.solax_acp3
     style:
-      top: 27%
-      left: 92%
-      width: 70px
+      top: 29%
+      left: 91%
+      width: 60px
       text-align: right
       color: white
       font-weight: bold
       font-size: 0.8em
-      font-family: monospace
 
-  # 4. Řádek 2: NAPĚTÍ (V)
+  # 6. Řádek 2: NAPĚTÍ (V)
   - type: state-label
     entity: sensor.solax_acu1
     style:
-      top: 34%
-      left: 72%
-      width: 70px
+      top: 36%
+      left: 71%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.80em
-      font-family: monospace
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_acu2
     style:
-      top: 34%
-      left: 82%
-      width: 70px
+      top: 36%
+      left: 81%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.80em
-      font-family: monospace
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_acu3
     style:
-      top: 34%
-      left: 92%
-      width: 70px
+      top: 36%
+      left: 91%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.80em
-      font-family: monospace
+      font-size: 0.75em
 
-  # 5. Řádek 3: PROUD (A)
+  # 7. Řádek 3: PROUD (A)
   - type: state-label
     entity: sensor.solax_aci1
     style:
-      top: 40%
-      left: 73%
-      width: 70px
+      top: 43%
+      left: 71%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.7em
-      font-family: monospace
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_aci2
     style:
-      top: 40%
-      left: 83%
-      width: 68px
+      top: 43%
+      left: 81%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.7em
-      font-family: monospace
+      font-size: 0.75em
   - type: state-label
     entity: sensor.solax_aci3
     style:
-      top: 40%
-      left: 92%
-      width: 70px
+      top: 43%
+      left: 91%
+      width: 60px
       text-align: right
       color: rgba(255, 255, 255, 0.8)
-      font-size: 0.7em
-      font-family: monospace
+      font-size: 0.75em
 
   # ============================================================
   # === KONEC OBLASTI FÁZÍ ===
@@ -349,7 +396,7 @@ elements:
     style:
       left: 48%
       top: 71%
-      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-font-size": 1.2em
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": rgba(0,0,0,0.7)
       "--label-badge-text-color": white
@@ -358,7 +405,7 @@ elements:
     style:
       left: 89%
       top: 72%
-      "--ha-label-badge-font-size": 1.3em
+      "--ha-label-badge-font-size": 1.2em
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": "#4caf50"
       "--label-badge-text-color": white
@@ -378,7 +425,7 @@ elements:
     style:
       left: 64%
       top: 72%
-      transform: scale(0.9)
+      transform: scale(0.8)
       "--ha-label-badge-title-font-size": 0em
       "--ha-label-badge-background-color": rgba(255, 152, 0, 0.3)
   - type: state-label
